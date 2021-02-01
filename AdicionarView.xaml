@@ -1,0 +1,59 @@
+﻿<Window x:Class="TesteMvvm.AdicionarView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TesteMvvm"
+        xmlns:vm="clr-namespace:TesteMvvm.ViewModels"
+        mc:Ignorable="d"
+        Title="AdicionarView" Height="200" Width="300" x:Name="jnlCliente">
+    <Window.Resources>
+        <vm:ViewModelDetalhe x:Key="ViewModelDetalhe"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource ViewModelDetalhe}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtNome" Text="{Binding Cliente.Nome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"
+                 Grid.ColumnSpan="3" Grid.Column="1" Margin="3"></TextBox>
+        <Label Grid.Row="1">Nome:</Label>
+
+        <TextBox x:Name="txtCpf" Text="{Binding Cliente.Cpf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"
+                 Grid.ColumnSpan="3" Grid.Column="1" Margin="3"></TextBox>
+        <Label Grid.Row="2">CPF:</Label>
+
+        <TextBox x:Name="dtDate" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="3"
+                    Text="{Binding Cliente.DataNasci, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="3">Dt Nasci.:</Label>
+
+
+        <TextBox x:Name="txtEmail" Text="{Binding Cliente.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4"
+                 Grid.ColumnSpan="3" Grid.Column="1" Margin="3"></TextBox>
+        <Label Grid.Row="4">Email:</Label>
+
+
+        <Button x:Name="btnConfirmar" Content="Confirmar" Grid.Row="5"
+                Grid.Column="2" IsDefault="true"
+                Command="{Binding ConfirmarCommand}" 
+                CommandParameter="{Binding ElementName=jnlCliente}"/>
+
+        <TextBox x:Name="teste" Text="{Binding Cliente.Nome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6"
+                Grid.Column="1" Margin="3"></TextBox>
+        
+
+
+    </Grid>
+</Window>
